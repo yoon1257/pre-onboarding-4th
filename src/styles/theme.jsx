@@ -1,2 +1,2 @@
-export default { mainColor: '#01AEF0' };
+export default { mainColor: '#3183B5' };
 //${({ theme }) => theme.mainColor}
