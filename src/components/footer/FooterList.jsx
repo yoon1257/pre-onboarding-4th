@@ -26,7 +26,7 @@ const FooterList = () => {
       offUrl: pinOff,
     },
     {
-      name: '예약',
+      name: '병원목록',
       onUrl: noteOn,
       offUrl: noteOff,
     },
