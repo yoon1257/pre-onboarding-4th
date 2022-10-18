@@ -6,17 +6,25 @@ import noteOn from '../../assets/image/note-on.png';
 import noteOff from '../../assets/image/note-off.png';
 import phoneOn from '../../assets/image/phone-on.png';
 import phoneOff from '../../assets/image/phone-off.png';
+import { useNavigate } from 'react-router-dom';
 
 const FooterList = () => {
+  const navigate = useNavigate();
   const [isFooter, setIsFooter] = useState([true, false, false]);
-  const changeFooter = (e) => {
+
+  const changeFooter = (e, type) => {
     const targetId = Number(e.target.id);
     let result = [];
 
     for (let i = 0; i < isFooter.length; i++) {
       i === targetId ? result.push(true) : result.push(false);
     }
-
+    console.log('a', type);
+    if (type === '병원/약국') {
+      navigate('./');
+    } else if (type === '병원목록') {
+      navigate('./list');
+    }
     setIsFooter(result);
   };
   const footerTypes = [
@@ -31,7 +39,7 @@ const FooterList = () => {
       offUrl: noteOff,
     },
     {
-      name: '비대면진료',
+      name: '예약',
       onUrl: phoneOn,
       offUrl: phoneOff,
     },
@@ -43,7 +51,7 @@ const FooterList = () => {
           <Wrapper key={index}>
             <div
               id={index}
-              onClick={changeFooter}
+              onClick={(el) => changeFooter(el, footerType.name)}
               style={{
                 backgroundImage: `url(${isFooter[index] ? footerType.onUrl : footerType.offUrl})`,
               }}
