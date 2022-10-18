@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import List from '../components/list/List';
 import Map from '../components/list/map';
 const Main = () => {
   const [showData, setShowData] = useState();
@@ -19,7 +18,6 @@ const Main = () => {
   return (
     <MainBlock>
       <Map data={showData} />
-      <List />
     </MainBlock>
   );
 };
