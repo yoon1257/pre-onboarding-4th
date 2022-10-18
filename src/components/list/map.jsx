@@ -14,12 +14,29 @@ const Map = ({ data }) => {
     const zoomControl = new kakao.maps.ZoomControl();
     kakaoMap.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
+    const makeOverListener = (map, marker, infowindow) => {
+      return () => {
+        infowindow.open(kakaoMap, marker);
+      };
+    };
+
+    const makeOutListener = (infowindow) => {
+      return () => {
+        infowindow.close();
+      };
+    };
     data &&
       data.forEach((el) => {
         const marker = new kakao.maps.Marker({
           position: new kakao.maps.LatLng(el.lat, el.lng),
         });
         marker.setMap(kakaoMap);
+        const infowindow = new kakao.maps.InfoWindow({
+          position: new kakao.maps.LatLng(el.lat, el.lng),
+          content: `<div style="padding: 5px; font-size: 0.8em"}>${el.name}</div>`,
+        });
+        kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(kakaoMap, marker, infowindow));
+        kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
       });
   }, [data]);
 
