@@ -19,7 +19,7 @@ const FooterList = () => {
     for (let i = 0; i < isFooter.length; i++) {
       i === targetId ? result.push(true) : result.push(false);
     }
-    console.log('a', type);
+
     if (type === '병원/약국') {
       navigate('./');
     } else if (type === '병원목록') {
