@@ -1,2 +1,4 @@
-export default { mainColor: '#3183B5' };
-//${({ theme }) => theme.mainColor}
+const blue = '#13259a';
+const yellow = '#faed27';
+
+export { blue, yellow };
