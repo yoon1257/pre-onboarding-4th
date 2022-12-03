@@ -13,11 +13,13 @@ const Main = () => {
       .get('./data/hospital.json')
       .then((res) => {
         setShowData(res.data);
+        console.log('성공');
       })
       .catch((err) => {
         console.log('에러에러', err);
       });
   }, []);
+
   return (
     <MainContainer>
       <div className='contentContainer'>
