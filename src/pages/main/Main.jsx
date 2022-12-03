@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { FaHospitalAlt } from 'react-icons/fa';
 import styled from 'styled-components';
-import { blue, yellow } from '../styles/theme';
+import { blue } from '../../styles/theme';
+import { Link } from 'react-router-dom';
+
 const Main = () => {
   const [showData, setShowData] = useState();
 
@@ -22,8 +24,12 @@ const Main = () => {
         <h1>병원예약 시스템 룰루랩입니다</h1>
         <FaHospitalAlt className='icon' />
         <div className='buttonContainer'>
-          <button>진료예약하기</button>
-          <button>예약조회하기</button>
+          <Link to='information'>
+            <button>진료예약하기</button>
+          </Link>
+          <Link to='inquiry'>
+            <button>예약조회하기</button>
+          </Link>
         </div>
       </div>
     </MainContainer>
@@ -68,6 +74,9 @@ const MainContainer = styled.div`
       margin: auto;
       width: 50%;
 
+      a {
+        text-align: center;
+      }
       button {
         margin-bottom: 10px;
         padding: 30px;
